@@ -35,7 +35,7 @@ def test_reg_with_rest_pass_should_work(check_test_user, random_data):
 # ---------------Negative Test Reg With Rest Pass----------
 @pytest.mark.xfail
 def test_reg_with_rest_pass_xfail_auth(check_test_user, random_data):
-    response = requests.post("https://wpfolder/users", headers=headers, data=random_data)
+    response = requests.post(root_url + "/users", headers=headers, data=random_data)
     response_content = json.loads(response.content)
 
     try:
