@@ -16,7 +16,7 @@ def test_auth_with_rest_pass_should_work():
     assert response.status_code == 200
     assert (
         response_content["_links"]["collection"][0]["href"]
-        == "https://wpfolder/wp-json/wp/v2/users"
+        == "http://co67514.tw1.ru/wp-json/wp/v2/users"
     )
     # assert (response_content.get["_links.collection.0.href"] == "https://wpfolder/wp-json/wp/v2/users")
     # assert (response_content.get("_links").get("collection").get([0]).get("href") == "https://wpfolder/wp-json/wp/v2/users")

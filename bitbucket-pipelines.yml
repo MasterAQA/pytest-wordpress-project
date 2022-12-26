@@ -1,0 +1,25 @@
+#  Template python-build
+
+#  This template allows you to validate your python code.
+#  The workflow allows running tests and code linting on the default branch.
+
+image: python:3.10
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: Pytest-wordpress-project
+          caches:
+            - pip
+          script:
+            - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            - pytest -s -p no:warnings -n 8 tests/rest_api --junitxml=test-reports/report.xml
+      - step:
+          name: Project, gw2
+          caches:
+            - pip
+          script:
+            # Enforce style consistency across Python projects https://flake8.pycqa.org/en/latest/manpage.html
+            - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            - pytest -s -p no:warnings -n 8 tests/rest_api --junitxml=test-reports/report.xml
